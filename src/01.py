@@ -1,14 +1,6 @@
 #!/usr/bin/env python3
 
-# ruff: noqa: F401
 import collections
-import functools
-import io
-import itertools
-import operator as op
-import re
-import timeit
-
 
 import numpy as np
 import aocd
@@ -33,10 +25,9 @@ def main():
     data = aocd.get_data(day=DAY, year=YEAR)
     inlist = np.array([tuple(map(int, l.split())) for l in data.split('\n') if l])
 
-    # print(np.sort(inlist, axis=0))
     answer = np.sum(np.abs(np.diff(np.sort(inlist, axis=0), axis=1)))
     print(answer)
-    # aocd.submit(answer, part='a', day=DAY, year=YEAR)
+    aocd.submit(answer, part='a', day=DAY, year=YEAR)
 
     answer = sim(inlist[:, 0], inlist[:, 1])
     print(answer)
