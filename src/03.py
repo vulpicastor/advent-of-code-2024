@@ -1,13 +1,6 @@
 #!/usr/bin/env python3
 
-# ruff: noqa: F401
-import collections
-import functools
-import io
-import itertools
-import operator as op
 import re
-import timeit
 
 import numpy as np
 import aocd
@@ -45,8 +38,6 @@ def exec_mul_cond(res):
                 m = re.match(r'mul\(([0-9]+),([0-9]+)\)', l)
                 a, b = m.group(1, 2)
                 total += int(a) * int(b)
-            # case _:
-            #     raise ValueError(f'Unmatched case: {l}')
     return total
                 
 
@@ -56,16 +47,13 @@ def main():
 """
     data = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
     data = aocd.get_data(day=DAY, year=YEAR)
-    # inlist = [l for l in data.split('\n') if l]  # noqa: F841
 
     res = match_mul(data)
     answer = mul_sum(res)
-    print(res)
     print(answer)
     aocd.submit(answer, part='a', day=DAY, year=YEAR)
 
     res = match_mul_cond(data)
-    print(res)
     answer = exec_mul_cond(res)
     print(answer)
     aocd.submit(answer, part='b', day=DAY, year=YEAR)
