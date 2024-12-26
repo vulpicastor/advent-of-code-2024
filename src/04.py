@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
 
-# ruff: noqa: F401
-import collections
-import functools
-import io
 import itertools
-import operator as op
 import re
-import timeit
 
 import numpy as np
 import aocd
@@ -81,16 +75,13 @@ MAMMMXMMMM
 MXMXAXMASX
 """
     data = aocd.get_data(day=DAY, year=YEAR)
-    inlist = [list(l) for l in data.split('\n') if l]  # noqa: F841
+    inlist = [list(l) for l in data.split('\n') if l]
     grid = np.array(inlist)
 
     answer = count_xmas(grid)
     print(answer)
-    # aocd.submit(answer, part='a', day=DAY, year=YEAR)
+    aocd.submit(answer, part='a', day=DAY, year=YEAR)
 
-    # print(X_MAS)
-    # print(X_MASES)
-    # print(X_MAS_MASK)
     answer = count_x_mas(grid)
     print(answer)
     aocd.submit(answer, part='b', day=DAY, year=YEAR)
