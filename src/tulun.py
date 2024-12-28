@@ -588,6 +588,14 @@ class Digraph(BaseGraph, collections.UserDict):
     def __delitem__(self, key):
         pass
 
+    def reverse(self):
+        """Reverse the direction of all edges."""
+        reversed_graph = Digraph()
+        for e, neighs in self.items():
+            for n, v in neighs.items():
+                reversed_graph.sete(n.k, e, v)
+        return reversed_graph
+    
 
 class Graph(Digraph):
     """A class representing simple directed graphs (digraphs)
